@@ -4,6 +4,9 @@ import shutil
 import subprocess
 import sys
 
+caffe_path = os.path.join(os.path.dirname(__file__), "..", "build/install", "python")
+sys.path.insert(0, caffe_path)
+
 from caffe.proto import caffe_pb2
 from google.protobuf import text_format
 
