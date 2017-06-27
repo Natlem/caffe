@@ -9,6 +9,40 @@ endif()
 # ---[ Caffe project
 project(Caffe C CXX)
 
+set(DEPS_FOLDER $ENV{DEPS})
+set(INSTALL_FOLDER "${DEPS_FOLDER}/install")
+set(INSTALL_LIB "${INSTALL_FOLDER}/lib")
+set(INSTALL_INCLUDE "${INSTALL_FOLDER}/include")
+
+#Boost
+set(BOOST_ROOT "${DEPS_FOLDER}/boost") 
+
+set(ENV{CMAKE_PREFIX_PATH} ${INSTALL_FOLDER})
+
+#Protobuf bin
+set(ENV{PATH} "$ENV{PATH}:${INSTALL_FOLDER}/bin")
+
+#Glog
+#set(GLOG_LIBRARY ${INSTALL_LIB}) 
+#set(GLOG_INCLUDE_DIR ${INSTALL_INCLUDE})
+
+#gflags
+#set(GFLAGS_LIBRARY "${INSTALL_LIB}") 
+#set(GFLAGS_INCLUDE_DIR ${INSTALL_INCLUDE})
+
+#lmdb
+#set(LMDB_LIBRARIES ${INSTALL_LIB})
+set(LMDB_INCLUDE_DIR ${DEPS_FOLDER}/lmdb/libraries/liblmdb)
+
+#leveldb
+#set(LevelDB_LIBRARY ${INSTALL_LIB})
+set(LevelDB_INCLUDE ${DEPS_FOLDER}/leveldb/include)
+
+#snappy
+#set(Snappy_LIBRARIES ${INSTALL_LIB})
+set(Snappy_INCLUDE_DIR ${DEPS_FOLDER}/snappy)
+
+
 # ---[ Caffe version
 set(CAFFE_TARGET_VERSION "1.0.0-rc3" CACHE STRING "Caffe logical version")
 set(CAFFE_TARGET_SOVERSION "1.0.0-rc3" CACHE STRING "Caffe soname version")
